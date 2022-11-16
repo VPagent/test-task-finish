@@ -9,7 +9,7 @@ const ClientRoutes:React.FC = () => {
         
         <Routes>
             <Route path="/" element={<HomePage /> }/>
-            <Route path="test-task-finish/:itemId" element={<SingleItemPage />} />
+            <Route path="/:itemId" element={<SingleItemPage />} />
         </Routes>
     )
 }
