@@ -6,9 +6,10 @@ import SingleItemPage from "../../pages/SingleItemPage/SingleItemPage"
 const ClientRoutes:React.FC = () => {
 
     return(
+        
         <Routes>
             <Route path="/" element={<HomePage /> }/>
-            <Route path="/:itemId" element={<SingleItemPage />} />
+            <Route path="test-task-finish/:itemId" element={<SingleItemPage />} />
         </Routes>
     )
 }

@@ -1,5 +1,4 @@
 import FavoritesBar from '../FavoritesBar/FavoritesBar';
-// import {convertMs} from "../../helpers/date/convert"
 import { useNavigate } from 'react-router-dom';
 import store from '../../globalState/state';
 import { Item } from '../../globalState/state';
@@ -9,7 +8,6 @@ import AddressBox from '../AddressBox/AddressBox';
 import ControlsSingle from '../ControlsSingle/ControlsSingle';
 import cutTitle from '../../helpers/editText/cutTitle';
 import DepartmentBox from '../DepartmentBox/DepartmentBox';
-import { useEffect, useState } from 'react';
 
 type Props = {
   elem: Item;
