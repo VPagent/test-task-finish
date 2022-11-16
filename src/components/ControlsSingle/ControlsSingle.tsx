@@ -19,14 +19,16 @@ const ControlsSingle:React.FC<Props> = ({inSingle, id}) => {
     const isDesktop = useMediaQuery({query: '(min-width: 1200px)'})
     const [added, setAdded] = store.useGlobalState('added');
     const isAdded = added?.some(elem => elem === id)
-    const storage = JSON.parse(localStorage.getItem(LOCAL_KEY) ?? '')
+    // @ts-ignore
+    const storage = JSON.parse(localStorage.getItem(LOCAL_KEY))
 
     useEffect(() => {
         if(storage?.length <= 0){
             localStorage.setItem(LOCAL_KEY, JSON.stringify(added))
         }
         if(storage?.length > 0){
-            setAdded(JSON.parse(localStorage.getItem(LOCAL_KEY) ?? ''))
+            // @ts-ignore
+            setAdded(JSON.parse(localStorage.getItem(LOCAL_KEY)))
         }
     }, [])
 
