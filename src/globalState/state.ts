@@ -18,13 +18,13 @@ export type Item={
 }
 type InitState = {
     singleItem: Item | null
-    added: string[] 
+    added: string[] | null
     items: Item[] | null
 }
 
 const initialState: InitState = {
     singleItem : null,
-    added: [],
+    added: null,
     items: null
 }
 

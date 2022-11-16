@@ -19,40 +19,41 @@ const ControlsSingle:React.FC<Props> = ({inSingle, id}) => {
     const isDesktop = useMediaQuery({query: '(min-width: 1200px)'})
     const [added, setAdded] = store.useGlobalState('added');
     const isAdded = added?.some(elem => elem === id)
-    // @ts-ignore
-    const storage = JSON.parse(localStorage.getItem(LOCAL_KEY))
-
+    const storage = JSON.parse(localStorage.getItem(LOCAL_KEY) as string)
+    
     useEffect(() => {
-        if(storage?.length <= 0){
-            localStorage.setItem(LOCAL_KEY, JSON.stringify(added))
+        if(storage?.length >= 0){ 
+            setAdded(JSON.parse(localStorage.getItem(LOCAL_KEY) as string))
         }
-        if(storage?.length > 0){
-            // @ts-ignore
-            setAdded(JSON.parse(localStorage.getItem(LOCAL_KEY)))
-        }
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
-        if(added.length > 0){
+        if(added){
             localStorage.setItem(LOCAL_KEY, JSON.stringify(added))
         }
     }, [added])
 
     const handleClickAdd = () => {
-        if(isAdded){
-            setAdded((prev) => prev.filter(elem => elem !== id))
-            return
-        }
-        if(added.length > 0){
-            setAdded((prev) => [...prev, id])
-        }
-        if(added.length <= 0){
+        if(!added){
             setAdded([id])
+        }
+        if(added){
+            if(isAdded){
+                setAdded((prev) =>{ return prev ? prev.filter(elem => elem !== id) : prev})
+                return
+            }
+            if(added.length > 0){
+                setAdded((prev) => {return prev ? [...prev, id] : prev})
+            }
+            if(added.length <= 0){
+                setAdded([id])
+            }
         }
     }
     return(
         <div className={`flex ${!isDesktop && "pt-[24px] pb-[32px]"} ${!inSingle && "ml-auto"}`}>
-            <span onClick={handleClickAdd} className={`flex items-center ${inSingle ? "mr-9" : "mr-0"}`}>
+            <span onClick={handleClickAdd} className={`flex items-center ${inSingle ? "mr-9" : "mr-0"} cursor-pointer`}>
                 {inSingle && (isDesktop ?
                     <FiBookmark 
                         color='#70778B' 

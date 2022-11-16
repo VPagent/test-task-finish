@@ -51,7 +51,7 @@
     @apply w-16 h-16 lg:w-[85px] lg:h-[85px] block rounded-full
   }
   .cardTitle {
-    @apply  text-[18px] leading-[24px] tracking-[-0.6px] text-[#3A4562] font-normal lg:font-bold block mt-3.5 mb-1 lg:text-[20px] lg:font-bold;
+    @apply  text-[18px] leading-[24px] tracking-[-0.6px] text-[#3A4562] font-normal lg:font-bold block mt-3.5 mb-1 lg:text-[20px] lg:font-bold cursor-pointer;
   }
 
 }
